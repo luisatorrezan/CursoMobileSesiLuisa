@@ -37,7 +37,16 @@ public class Curso {
             System.out.println("i+"+aluno.getNome());
             i++;
         }
-
         //exibirStatusAluno
+        public void exibirStatusAluno(){
+            int i = 1;
+        for (Aluno aluno : alunos) {
+            if (aluno.getNota() >= 6) 
+                System.out.println(i + ". " + aluno.getNota() + "| Aprovado");
+            else
+                System.out.println(i + ". " + aluno.getNota() + "| Reprovado");
+            i++;
+        }
     }
+
 }
