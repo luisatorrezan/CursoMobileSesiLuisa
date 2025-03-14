@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() { //roda minha aplicação
   runApp(const MainApp());
@@ -6,6 +7,8 @@ void main() { //roda minha aplicação
 
 class MainApp extends StatelessWidget { //janela de aplicação
   const MainApp({super.key});
+  
+  get child => null;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class MainApp extends StatelessWidget { //janela de aplicação
           child: ElevatedButton(
             onPressed: () => Fluttertoast.showToast(
               msg: "Hello, World!!!",
-              toastLenght: Toast.LENGHT_SHORT,
+              toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER
             ) ,
             child: child),
