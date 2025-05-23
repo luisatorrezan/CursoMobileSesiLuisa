@@ -9,7 +9,7 @@ class ConsultasController {
   }
 
   Future<int> insertConsulta(Consulta consulta) async{
-    return await _dbHelper.insertConculta(consulta);
+    return await _dbHelper.insertConsulta(consulta);
   }
 
   Future<int> deleteConsulta(int id) async{
