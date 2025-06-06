@@ -1,9 +1,11 @@
 import 'package:sa_petshop/database/db_helper.dart';
-import 'package:sa_petshop/models/pet_model.dart';
 
-class PetsController{
-  //atributo -> é conexão com o DB
+import '../models/pet_model.dart';
+
+class PetsController {
+  //atributo -> é conexão com DB
   final PetShopDBHelper _dbHelper = PetShopDBHelper();
+
 
   Future<int> addPet(Pet pet) async{
     return await _dbHelper.insertPet(pet);
