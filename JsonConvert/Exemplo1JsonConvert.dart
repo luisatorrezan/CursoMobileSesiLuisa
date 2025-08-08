@@ -3,6 +3,7 @@
 import 'dart:convert'; //biblioteca para o funcionamento do json
 
 void main() {
+  //texto em formato json
   String dbJson = ''' {
             "id":1,
             "nome": "João",
@@ -11,6 +12,7 @@ void main() {
             "senha": 1234
                 }''';
 
+//convertendo texto json -> map dart
 Map<String,dynamic> usuario = json.decode(dbJson);
 
 print(usuario["login"]); //joao_user
@@ -19,7 +21,7 @@ print(usuario["login"]); //joao_user
 
 usuario["senha"] = 1111;
 
-//fazer o encode
+//fazer o encode -> map dart -> texto json
 
 dbJson = json.encode(usuario);
 
