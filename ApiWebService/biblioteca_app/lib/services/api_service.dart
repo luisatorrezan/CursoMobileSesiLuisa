@@ -3,27 +3,27 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  //base URL para conexão com API
-  static const String _baseURL = "http://10.109.197.13:3007";
+  // base URL para Conexão com API
+  static const String _baseURL = "http://10.109.197.12:3000";
 
-  //métodos
-  //GET (listar todos)
+  // métodos da classe e não do obj => instanciar obj
+  //GET (Listar todos os Recurso)
   static Future<List<dynamic>> getList(String path) async{
     final res = await http.get(Uri.parse("$_baseURL/$path"));
     if (res.statusCode == 200) return json.decode(res.body); //se deu certo interrompe o código aqui
-    //se não deu certo a conexão -> gerar um erro
-    throw Exception("Falha ao carregar lista de $path");
+    // se não deu cert a conexão -> gerar um erro 
+    throw Exception("Falha ao Carregar Lista de $path");
   }
 
-  //GET (listar um único recurso)
+  //GET (Listar um Unico Recurso)
   static Future<Map<String,dynamic>> getOne(String path, String id) async{
     final res = await http.get(Uri.parse("$_baseURL/$path/$id"));
-    if (res.statusCode == 200) return json.decode(res.body);
-    //se não der certo 
-    throw Exception("Falha ao carregar recurso de $path");
+    if (res.statusCode ==200) return json.decode(res.body);
+    // se não der certo
+   throw Exception("Falha ao Carregar Recurso de $path");
   }
 
-  //POST (criar novo recurso)
+  //POST ( Criar novo Recurso)
   static Future<Map<String,dynamic>> post(String path, Map<String,dynamic> body) async{
     final res = await http.post(
       Uri.parse("$_baseURL/$path"),
@@ -31,23 +31,25 @@ class ApiService {
       body: json.encode(body)
     );
     if (res.statusCode == 201) return json.decode(res.body);
-    throw Exception("Falha ao criar em $path");
+    throw Exception("Falha ao Criar em $path");
   }
 
-  //PUT (atuaçlizar recurso)
-    static Future<Map<String,dynamic>> put(String path, Map<String,dynamic> body, String id) async{
+  //PUT (Atualizar Recurso)
+  static Future<Map<String,dynamic>> put(String path, Map<String,dynamic> body, String id) async{
+    print("$_baseURL/$path/$id");
     final res = await http.put(
       Uri.parse("$_baseURL/$path/$id"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(body)
     );
-    if (res.statusCode == 201) return json.decode(res.body);
-    throw Exception("Falha ao atualizar em $path");
+    if (res.statusCode == 200) return json.decode(res.body);
+    throw Exception("Falha ao Atualizar em $path");
   }
 
-  //DELETE (apagar recurso)
+  //DELETE (Apagar Recurso)
   static delete(String path, String id) async{
     final res = await http.delete(Uri.parse("$_baseURL/$path/$id"));
-    if (res.statusCode != 200) throw Exception("Falha ao deletar de $path");
+    if ( res.statusCode != 200) throw Exception("Falha ao Deletar de $path");
   }
+
 }

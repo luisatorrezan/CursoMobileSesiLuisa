@@ -1,26 +1,26 @@
-class UsersModel {
+class UserModel {
   //atributos
-  final String? id; //pode ser nulo inicialmente
+  final String? id; 
   final String name;
   final String email;
-
   //construtor
-  UsersModel({
-    this.id, 
+  UserModel({
+    this.id,
     required this.name,
     required this.email
   });
 
-  //método
-  //toJson
+  //métodos
+  //toJson => OBJ => MAP
   Map<String,dynamic> toJson() => {
-    "id":id,
+    //jogar id vazio
+    "id": id, //se id for nulo, joga vazio
     "name":name,
     "email":email
-  };
+    };
 
-  //fromJson
-  factory UsersModel.fromJson(Map<String,dynamic> json) => UsersModel(
+  //fromJson MAP => OBJ
+  factory UserModel.fromJson(Map<String,dynamic> json) => UserModel(
     id: json["id"].toString(),
     name: json["name"].toString(), 
     email: json["email"].toString());
