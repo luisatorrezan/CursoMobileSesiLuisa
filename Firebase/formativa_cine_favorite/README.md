@@ -55,4 +55,4 @@ Demonstar o funcionamento das entidades do sistema
         }
 
         User "1"--"1+" FavoriteMovie: "select"
-´´´
+```
