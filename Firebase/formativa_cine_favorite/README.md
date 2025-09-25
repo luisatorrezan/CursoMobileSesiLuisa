@@ -33,7 +33,7 @@ Demonstar o funcionamento das entidades do sistema
 
 ´´´mermaid
     
-    ClassDiagram
+    classDiagram
         class User{
             +String uid
             +String email
