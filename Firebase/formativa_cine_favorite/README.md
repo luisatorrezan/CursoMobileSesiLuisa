@@ -30,8 +30,8 @@ Demonstar o funcionamento das entidades do sistema
 
 - Filmes Favoritos (FavoriteMovie): Classe modelada pelo DEV
     - Atributos: id, título, remover, listar, atualizadaNota (CRUD)
-
-´´´mermaid
+    
+```mermaid
     
     classDiagram
         class User{
@@ -51,7 +51,7 @@ Demonstar o funcionamento das entidades do sistema
             +addFavorite()
             +removeFavorite()
             +updateMovieRating()
-            +getFavoriteMovie()
+            +getFavoriteMovies()
         }
 
         User "1"--"1+" FavoriteMovie: "select"
