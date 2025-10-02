@@ -9,20 +9,23 @@ class RegistroView extends StatefulWidget {
 }
 
 class _RegistroViewState extends State<RegistroView> {
+ //atributos
   final _emailField = TextEditingController();
   final _senhaField = TextEditingController();
-  final confSenhaField = TextEditingController();
-  final _authController = FirebaseAuth.instance;
+  final _confSenhaField = TextEditingController();
+  final _authController = FirebaseAuth.instance; //controlador do Firebase Auth
   bool _senhaOculta = true;
   bool _confSenhaOculta = true;
 
-  void _registrar() async {
-    if(_senhaField.text != confSenhaField.text) return;
+  //método _registrar
+  void _registrar() async{
+    if(_senhaField.text != _confSenhaField.text) return;//interrompe o método se senhas diferentes
     try {
       await _authController.createUserWithEmailAndPassword(
         email: _emailField.text.trim(), 
         password: _senhaField.text);
-      Navigator.pop(context);
+      Navigator.pop(context); //fecha a tela de Registro
+      // é logado automaticamente após o cadastro
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Falha ao registrar: $e"))
@@ -30,6 +33,7 @@ class _RegistroViewState extends State<RegistroView> {
     }
   }
 
+  //build da tela
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +65,7 @@ class _RegistroViewState extends State<RegistroView> {
               obscureText: _senhaOculta,
             ),
             TextField(
-              controller: confSenhaField,
+              controller: _confSenhaField,
               decoration: InputDecoration(
                 labelText: "Senha",
                 suffix: IconButton(
@@ -85,4 +89,3 @@ class _RegistroViewState extends State<RegistroView> {
     );
   }
 }
-
